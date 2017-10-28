@@ -84,8 +84,7 @@ aside,
 figure,
 footer,
 header,
-hgroup,
-section {
+hgroup {
   display: block;
 }
 
@@ -2368,17 +2367,7 @@ a.box:active {
   pointer-events: none;
 }
 
-.container {
-  margin: 0 auto;
-  position: relative;
-}
-
 @media screen and (min-width:1024px) {
-  .container {
-    max-width: 960px;
-    width: 960px;
-  }
-
   .container.is-fluid {
     margin-left: 32px;
     margin-right: 32px;
@@ -9662,8 +9651,7 @@ label.panel-block:hover {
   flex-shrink: 0;
 }
 
-.hero-body,
-.section {
+.hero-body {
   padding: 3rem 1.5rem;
 }
 
