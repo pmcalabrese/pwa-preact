@@ -1,5 +1,6 @@
 # PWA Preact
-A minimalistic PWA boilerplate based Webpack 3, Preact and Typescript with performance in mind.
+A minimalistic PWA boilerplate based on Webpack 3, Preact and Typescript with performance in mind.
+[https://pmcalabrese.github.io/pwa-preact/](https://pmcalabrese.github.io/pwa-preact/)
 
 the main features are:
 -   Preact

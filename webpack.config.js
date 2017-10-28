@@ -40,7 +40,7 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             inject: true,
-            title: 'PWA Boilerplate: Webpack + Preact + TS',
+            title: 'PWA Preact',
             preload: ['commons', 'js/home', 'css/home.style'],
             template: './src/index.ejs', // Load a custom template (ejs by default see the FAQ for details)
             chunks: ['commons', 'js/home', 'css/home.style']
