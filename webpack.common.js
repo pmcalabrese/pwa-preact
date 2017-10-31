@@ -1,13 +1,10 @@
 const path = require("path");
 const webpack = require("webpack");
-const DIST_DIR = path.join(__dirname, "./public");
+DIST_DIR = path.join(__dirname, "./public");
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const workboxPlugin = require('workbox-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
-const HtmlCriticalPlugin = require("html-critical-webpack-plugin");
 
 const extractSass = new ExtractTextPlugin({
     filename: "[name].[contenthash:8].css",
@@ -25,6 +22,11 @@ module.exports = {
     },
     plugins: [
         extractSass,
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
+        }),
         new CopyWebpackPlugin([
             { from: './src/manifest.json' },
             // { from: './src/index.html' },
@@ -44,24 +46,6 @@ module.exports = {
             preload: ['commons', 'js/home', 'css/home.style'],
             template: './src/index.ejs', // Load a custom template (ejs by default see the FAQ for details)
             chunks: ['commons', 'js/home', 'css/home.style']
-        }),
-        new HtmlCriticalPlugin({
-            base: DIST_DIR,
-            src: 'index.html',
-            dest: 'index.html',
-            inline: true,
-            minify: true,
-            extract: true,
-            width: 1200,
-            height: 1200,
-            penthouse: {
-                blockJSRequests: false,
-            }
-        }),
-        new workboxPlugin({
-            globDirectory: DIST_DIR,
-            globPatterns: ['**/*.{html,js,css}'],
-            swDest: path.join(DIST_DIR, 'sw.js'),
         })
     ],
     module: {
@@ -79,7 +63,6 @@ module.exports = {
                             ],
                             plugins: [
                                 [
-                                    "transform-class-properties",
                                     'transform-react-jsx',
                                     { pragma: 'h' },
                                 ]

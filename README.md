@@ -1,14 +1,20 @@
 # PWA Preact
 A minimalistic PWA boilerplate based on Webpack 3, Preact and Typescript with performance in mind.
+
 [https://pmcalabrese.github.io/pwa-preact/](https://pmcalabrese.github.io/pwa-preact/)
 
-the main features are:
+Features:
 -   Preact
 -   Typescript
--   Webpack + Webpack dev server
+-   Webpack + Webpack dev server (prod and dev setup)
 -   Service Worker with Workbox
--   It scores very high in Lighthouse
+-   Very high Lighthouse score
 -   manifest.json file
+-   Code splitting
+-   Support for SCSS
+-   Critical CSS
+-   Web installed app ready
+-   Gzip on compilation
 
 ## Install
 Install the dependencies
