@@ -17,7 +17,6 @@
   "license": "ISC",
   "dependencies": {
     "bulma": "^0.6.0",
-    "critical": "^0.9.1",
     "preact": "^8.2.6"
   },
   "devDependencies": {
