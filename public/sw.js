@@ -27,10 +27,6 @@ const fileManifest = [
     "revision": "2ce59429da5064af8f72b07b795d8070"
   },
   {
-    "url": "css/home.style.37cf24b8.css",
-    "revision": "37cf24b8d61f8b34bd73b866cff5f652"
-  },
-  {
     "url": "css/home.style.bundle.0824d653.js",
     "revision": "b2ae49c1ef43553ec25ff3555798d47d"
   },
