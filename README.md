@@ -22,12 +22,12 @@ Install the dependencies
     npm i
 
 ## Compile and watch
-Start webpack
+Start webpack in development mode
 
     npm start
 
 ## Develop
-Start developing with webpack dev server
+Start webpack dev server in development mode
 
     npm run start:dev
 
@@ -37,11 +37,11 @@ Build for production
     npm run build
 
 ## Build and serve with http-server
-Build for production
+Build for production and serve on port 8080
 
     npm run build-serve
 
- ## Just serve with http-server
+ ## Just serve with http-server on port 8080
 Build for production
 
     npm run serve
