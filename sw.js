@@ -19,8 +19,12 @@ importScripts('workbox-sw.prod.v2.1.0.js');
  */
 const fileManifest = [
   {
-    "url": "css/home.style.37cf24b8.54b0c13c.css",
-    "revision": "54b0c13c1d15af506590d748859e59b8"
+    "url": "css/home.style.2ce59429.70eeff18.css",
+    "revision": "70eeff18fc190b60d371abd6c9e1329a"
+  },
+  {
+    "url": "css/home.style.2ce59429.css",
+    "revision": "2ce59429da5064af8f72b07b795d8070"
   },
   {
     "url": "css/home.style.37cf24b8.css",
@@ -28,19 +32,19 @@ const fileManifest = [
   },
   {
     "url": "css/home.style.bundle.0824d653.js",
-    "revision": "a22a69e21557986d2ffa7204bcc131e9"
+    "revision": "b2ae49c1ef43553ec25ff3555798d47d"
   },
   {
     "url": "index.html",
-    "revision": "ec6f5d84ab8f222b17e9eb6ecfbf8498"
+    "revision": "04947a233c2c6baec9fe037f1a7e493f"
   },
   {
     "url": "js/commons.5b453b1b.js",
-    "revision": "abd013707f448c727a817ffb37262055"
+    "revision": "e8c9e672235e2eebbb3533906eb62c10"
   },
   {
     "url": "js/home.bundle.92930f8c.js",
-    "revision": "4abd50d649b37af91fe5d0967ad51b26"
+    "revision": "91028d1a7a055cf277eca376feea6c61"
   }
 ];
 

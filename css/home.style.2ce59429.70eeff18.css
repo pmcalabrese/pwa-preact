@@ -8587,15 +8587,15 @@ label.panel-block:hover {
 }
 
 .columns.is-variable.is-1 {
-  --columnGap: .25rem;
+  --columnGap: 0.25rem;
 }
 
 .columns.is-variable.is-2 {
-  --columnGap: .5rem;
+  --columnGap: 0.5rem;
 }
 
 .columns.is-variable.is-3 {
-  --columnGap: .75rem;
+  --columnGap: 0.75rem;
 }
 
 .columns.is-variable.is-4 {
