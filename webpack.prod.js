@@ -4,6 +4,7 @@ const common = require('./webpack.common.js');
 const HtmlCriticalPlugin = require("html-critical-webpack-plugin");
 const workboxPlugin = require('workbox-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
+const Webpack = require('webpack');
 
 DIST_DIR = path.join(__dirname, "./public");
 
@@ -22,10 +23,19 @@ module.exports = merge(common, {
                 blockJSRequests: false,
             }
         }),
-        new workboxPlugin({
+        new Webpack.optimize.UglifyJsPlugin({
+            compress: {
+              drop_console: true,
+            }
+        }),
+        new workboxPlugin.GenerateSW({
             globDirectory: DIST_DIR,
-            globPatterns: ['**/*.{html,js,css}'],
-            swDest: path.join(DIST_DIR, 'sw.js'),
+            skipWaiting: true,
+            swDest: 'sw.js',
+            runtimeCaching: [{
+                urlPattern: new RegExp('https://hacker-news.firebaseio.com'),
+                handler: 'staleWhileRevalidate'
+            }]
         }),
         new CompressionPlugin({
             asset: '[path].gz[query]'

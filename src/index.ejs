@@ -20,18 +20,12 @@
             <div>
                 Clock: <span id="preact-clock"></span>
             </div>
+            <div>
+              <span id="preact-modal-button"></span>
+              <span id="preact-modal-button2"></span>
+            </div>
         </div>
     </section>
-
-    <script>
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('./sw.js').then(function (registration) {
-          }).catch(function (error) {
-          });
-        } else {
-          // The current browser doesn't support service workers.
-        }
-      </script>
       
 
   <a href="https://github.com/pmcalabrese/pwa-preact" class="github-corner" aria-label="View source on Github">
@@ -71,5 +65,16 @@
       }
     }
   </style>
+  <script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js').then(registration => {
+        console.log('SW registered: ', registration);
+        registration.pushManager.subscribe({userVisibleOnly: true});
+      }).catch(registrationError => {
+        console.log("error")
+      });
+    });
+  }</script>
 </body>
 </html>
