@@ -43,6 +43,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: true,
             title: 'PWA Preact',
+            description: 'A minimalistic PWA boilerplate based on Webpack 3, Preact and Typescript with performance in mind',
             preload: ['commons', 'js/home', 'css/home.style'],
             template: './src/index.ejs', // Load a custom template (ejs by default see the FAQ for details)
             chunks: ['commons', 'js/home', 'css/home.style']
