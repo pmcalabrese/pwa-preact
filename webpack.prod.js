@@ -33,7 +33,7 @@ module.exports = merge(common, {
             skipWaiting: true,
             swDest: 'sw.js',
             runtimeCaching: [{
-                urlPattern: new RegExp('https://pmcalabrese.github.io/pwa-preact'),
+                urlPattern: new RegExp('https://pmcalabrese.github.io'),
                 handler: 'staleWhileRevalidate'
             }]
         }),
