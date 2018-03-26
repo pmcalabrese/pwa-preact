@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.0.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.2a61fbd863a60a46a804d0110f70054d.js"
+  "precache-manifest.4f77354c9485df3ee7e6ec5f3d73d3f9.js"
 );
 
 workbox.skipWaiting();
@@ -28,4 +28,4 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerRoute(/https:\/\/pmcalabrese.github.io\/pwa-preact/, workbox.strategies.staleWhileRevalidate(), 'GET');
+workbox.routing.registerRoute(/https:\/\/pmcalabrese.github.io/, workbox.strategies.staleWhileRevalidate(), 'GET');
