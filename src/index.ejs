@@ -70,7 +70,7 @@
   if ('serviceWorker' in navigator) {
     var workerFileName = '/pwa-preact/sw.js';
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register(workerFileName, { scope: "/" })
+        navigator.serviceWorker.register(workerFileName)
             .then(function (reg) {
                 var serviceWorker;
                 if (reg.installing) {
