@@ -1,20 +1,10 @@
-# PWA Preact
-A minimalistic PWA boilerplate based on Webpack 3, Preact and Typescript with performance in mind.
+# Microbit Python editor
 
-[https://pmcalabrese.github.io/pwa-preact/](https://pmcalabrese.github.io/pwa-preact/)
+## TDLR;
 
-Features:
--   Preact
--   Typescript
--   Webpack + Webpack dev server (prod and dev setup)
--   Service Worker with Workbox
--   Very high Lighthouse score
--   manifest.json file
--   Code splitting
--   Support for SCSS
--   Critical CSS
--   Web installed app ready
--   Gzip on compilation
+Install and serve the app with:
+
+    npm i && npm run serve
 
 ## Install
 Install the dependencies
