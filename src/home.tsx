@@ -1,7 +1,9 @@
-import { h, Component, render } from 'preact';
+import { h, Component, render, ComponentProps } from 'preact';
 import Router from 'preact-router';
-import { NotSupported } from "./notsupported";
 import autobind from 'autobind-decorator';
+
+import { NotSupported } from "./notsupported";
+import { VERSIONS } from "./const";
 
 interface HTMLInputEvent extends Event {
     target: HTMLInputElement & EventTarget;
@@ -18,15 +20,16 @@ interface FileReaderEvent extends Event {
 
 const Main = () => (
     <Router>
-        <App path="/" />
-        <App path="/1.0" />
-        <App path="/1.1" />
-        <App path="/2.0" />
+        <App path="1.0" />
+        <App path="1.1" />
+        <App path="2.0" />
         <NotSupported default />
     </Router>
 );
 
-// export interface Props extends ComponentProps<> {}
+export interface Props extends ComponentProps<App> {
+    version: string;
+}
 
 export interface AppState {
     version: string;
@@ -36,17 +39,23 @@ export interface AppState {
 
 export class App extends Component<any, AppState> {
 
-    versions = ["1.0", "1.1", "2.0"];
+    componentWillUpdate(props) {
+        this.updateVersion(props);
+    }
 
     componentDidMount() {
-        console.log('this.props', this.props)
-        if (this.props.path == "/") {
+        this.updateVersion(this.props);
+    }
+
+    @autobind
+    updateVersion(props) {
+        if (props.version == "/") {
             this.setState({
-                version: this.versions[2]
+                version: VERSIONS[2]
             })
         } else {
             this.setState({
-                version: this.props.path.replace("/", "")
+                version: props.path.replace("/", "")
             })
         }
     }
@@ -94,8 +103,6 @@ export class App extends Component<any, AppState> {
         const file = e.target.files[0];
         if (file.name.endsWith(".py")) {
             this.readFile(file, (f, contents) => {
-                // console.log('f', f);
-                // console.log('contents', contents);
                 let version_of_the_file = this.getVersionFromContent(contents)
                 this.setState({
                     version_of_the_file: version_of_the_file,
@@ -103,7 +110,7 @@ export class App extends Component<any, AppState> {
                 })
             });
         } else {
-            // is not a python file
+            alert("is not a Python file")
         }
     }
 
@@ -112,15 +119,16 @@ export class App extends Component<any, AppState> {
         if (this.state.content_of_the_file) {
             const first_line = this.state.content_of_the_file.split("\n")[0];
             if (first_line.startsWith("#")) {
-                const new_first_line = first_line + "|" +this.state.version;
-
-                let content_in_lines = this.state.content_of_the_file.split("\n");
-                content_in_lines[0] = new_first_line;
-                const contents = content_in_lines.join("\n");
-                this.setState({
-                    version_of_the_file: this.getVersionFromContent(contents),
-                    content_of_the_file: contents
-                })
+                if (this.state.version_of_the_file !== this.state.version) {
+                    const new_first_line = first_line + "|" +this.state.version;
+                    let content_in_lines = this.state.content_of_the_file.split("\n");
+                    content_in_lines[0] = new_first_line;
+                    const contents = content_in_lines.join("\n");
+                    this.setState({
+                        version_of_the_file: this.getVersionFromContent(contents),
+                        content_of_the_file: contents
+                    })
+                }
             } else {
                 // the first line is not a comment
             }
@@ -131,19 +139,31 @@ export class App extends Component<any, AppState> {
 
     render(props, state) {
         return <div>
-            <span id="version"><b>Version of the editor v{state.version}</b></span>
+            <span id="version">
+                Versions: 
+                {
+                    VERSIONS.map((version) => {
+                        if (version === state.version) {
+                            return <b title="current version">v{state.version}</b>       
+                        } else {
+                            return <a href={`/${version}`}><i>v{version}</i> </a>
+                        }
+                    })
+                }
+            </span>
             { state.version_of_the_file ?<span id="version">Version of the file v{state.version_of_the_file}</span> : null}
-            <textarea name="textarea" id="textarea">{ state.content_of_the_file}</textarea>
+            <textarea name="textarea" id="textarea">{ state.content_of_the_file }</textarea>
             <input type="file" name="one" value="" onChange={this.fileChange}/>
             <button class="button" type="button" onClick={this.save}>Save</button>
         </div>
     }
 }
 
-let $app;
+let app_id = 'app';
 try {
-    $app = document.getElementById("app")
-    render(<Main />, $app)
+    document.getElementById(app_id)
 } catch (error) {
-    throw Error("Cannot find element with the id 'app'");
+    throw Error(`Cannot find element with the id ${app_id}`);
 }
+
+render(<Main />, document.getElementById(app_id))
