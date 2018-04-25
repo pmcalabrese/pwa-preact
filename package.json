@@ -7,7 +7,7 @@
     "start": "./node_modules/.bin/webpack -w --config webpack.dev.js",
     "start:dev": "webpack-dev-server --config webpack.dev.js",
     "build": "./node_modules/.bin/webpack --config webpack.prod.js",
-    "serve": "./node_modules/.bin/http-server -c-1",
+    "serve": "./node_modules/.bin/ws --spa ./public/index.html",
     "build-serve": "npm run build && npm run serve",
     "test": "echo \"Error: no test specified\" && exit 1",
     "ghp": "git subtree push --prefix public origin gh-pages",
@@ -16,11 +16,9 @@
   "author": "Pachito Marco Calabrese <pm.calabrese@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "bulma": "^0.6.1",
-    "preact": "^8.2.6",
-    "preact-portal": "^1.1.2",
-    "rxjs": "^5.5.2",
-    "webpack-cli": "^2.0.12"
+    "bulma": "^0.7.1",
+    "preact": "^8.2.7",
+    "preact-router": "^2.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
